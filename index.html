@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANISH.NET - Layanan Internet RT/RW Net Tercepat & Terjangkau</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        whatsapp: '#25D366'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.4);
+        }
+        .glow-wa {
+            box-shadow: 0 0 20px -3px rgba(37, 211, 102, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 text-xl font-extrabold tracking-tight text-white">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
+                    <i class="fa-solid me-0.5 fa-wifi text-lg"></i>
+                </div>
+                <span>NEXUS<span class="text-brand-500">.NET</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#beranda" class="hover:text-brand-400 transition-colors">Beranda</a>
+                <a href="#paket" class="hover:text-brand-400 transition-colors">Paket Internet</a>
+                <a href="#coverage" class="hover:text-brand-400 transition-colors">Cek Jangkauan</a>
+                <a href="#kalkulator" class="hover:text-brand-400 transition-colors">Kalkulator</a>
+                <a href="#bantuan" class="hover:text-brand-400 transition-colors">Lapor Gangguan</a>
+            </div>
+
+            <!-- Header Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="openConfigModal()" class="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all" title="Pengaturan WA Admin">
+                    <i class="fa-solid fa-gear text-lg"></i>
+                </button>
+                <a href="#daftar" class="bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-brand-500/20 transition-all transform hover:-translate-y-0.5 text-sm flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Pasang Baru
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden mt-3 pt-3 border-t border-slate-800 flex flex-col gap-3 pb-2">
+            <a href="#beranda" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200">Beranda</a>
+            <a href="#paket" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200">Paket Internet</a>
+            <a href="#coverage" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200">Cek Jangkauan</a>
+            <a href="#kalkulator" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200">Kalkulator Speed</a>
+            <a href="#bantuan" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200">Lapor Gangguan</a>
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                <button onclick="openConfigModal()" class="flex-1 bg-slate-800 text-slate-300 py-2.5 rounded-xl text-center font-medium">
+                    <i class="fa-solid fa-gear mr-1"></i> Setting WA
+                </button>
+                <a href="#daftar" class="flex-1 bg-brand-600 text-white py-2.5 rounded-xl text-center font-medium flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Pasang Baru
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <!-- Background Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-brand-400 text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Jaringan Fiber Optic RT/RW Net Terstabil
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Internet Super Cepat <br class="hidden sm:block"/>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-cyan-300 to-emerald-400">
+                            Tanpa Batas Kuota!
+                        </span>
+                    </h1>
+                    
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Nikmati koneksi internet unlimited murah, stabil, dan ramah di kantong untuk seluruh keluarga di lingkungan RT/RW Anda. Langsung terhubung via WhatsApp!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#daftar" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-xl glow-wa flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Daftar via WA Sekarang</span>
+                        </a>
+                        <a href="#coverage" class="w-full sm:w-auto px-7 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold rounded-2xl transition-all text-center">
+                            <i class="fa-solid fa-map-location-dot mr-2 text-brand-400"></i> Cek Area Anda
+                        </a>
+                    </div>
+
+                    <!-- Live Running Status Ticker -->
+                    <div class="pt-6 border-t border-slate-800/80 flex items-center gap-3 text-xs text-slate-400">
+                        <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-mono uppercase text-[10px] font-bold">LIVE STATUS</span>
+                        <div class="overflow-hidden whitespace-nowrap w-full">
+                            <p class="animate-marquee">
+                                🚀 Status Jaringan: RT 01 (Normal - 100Mbps) | RT 02 (Normal) | RT 03 (Fiber Maintenance Selesai) | Bebas FUP Unlimted!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Speed Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 relative glow-effect">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400">NEXUS SPEEDTEST SIMULATOR</span>
+                        </div>
+
+                        <div class="text-center py-6">
+                            <div class="relative inline-flex items-center justify-center">
+                                <svg class="w-48 h-48 sm:w-56 sm:h-56 transform -rotate-90">
+                                    <circle cx="50%" cy="50%" r="40%" class="stroke-slate-800" stroke-width="12" fill="transparent"></circle>
+                                    <circle id="speed-circle" cx="50%" cy="50%" r="40%" class="stroke-brand-500 transition-all duration-300" stroke-width="12" stroke-dasharray="283" stroke-dashoffset="283" stroke-linecap="round" fill="transparent"></circle>
+                                </svg>
+                                <div class="absolute flex flex-col items-center">
+                                    <span id="speed-value" class="text-4xl sm:text-5xl font-black text-white">0</span>
+                                    <span class="text-xs text-brand-400 font-semibold uppercase tracking-wider">Mbps Speed</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mt-6">
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                    <span class="text-xs text-slate-400 block mb-1"><i class="fa-solid fa-download text-brand-400 mr-1"></i> Download</span>
+                                    <span id="dl-speed" class="text-lg font-bold text-slate-100">0.0 Mbps</span>
+                                </div>
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                    <span class="text-xs text-slate-400 block mb-1"><i class="fa-solid fa-upload text-emerald-400 mr-1"></i> Upload</span>
+                                    <span id="ul-speed" class="text-lg font-bold text-slate-100">0.0 Mbps</span>
+                                </div>
+                            </div>
+
+                            <button id="btn-test-speed" onclick="runSpeedTest()" class="w-full mt-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-md">
+                                <i class="fa-solid fa-gauge-high mr-2"></i> Uji Kecepatan Simulasi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages Section -->
+    <section id="paket" class="py-20 bg-slate-900/50 border-y border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-brand-400 mb-2">Pilihan Terbaik</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Paket Internet Rumahan Murah & Stabil</p>
+                <p class="text-slate-400 mt-3">Pilih kecepatan sesuai kebutuhan rumah tangga Anda. Bebas kuota & batasan FUP!</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Paket 1 -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between hover:border-slate-700 transition-all group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ekonomis</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Paket Hemat</h3>
+                            </div>
+                            <span class="bg-slate-800 text-slate-300 p-3 rounded-2xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-house text-xl"></i>
+                            </span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6">Cocok untuk 1 - 3 perangkat HP/Laptop untuk chatting & browsing.</p>
+                        
+                        <div class="mb-6">
+                            <span class="text-4xl font-black text-white">10</span>
+                            <span class="text-lg font-bold text-brand-400"> Mbps</span>
+                            <div class="text-2xl font-bold text-slate-200 mt-2">Rp 100.000 <span class="text-xs text-slate-400 font-normal">/bulan</span></div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8 border-t border-slate-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Unlimited Tanpa FUP</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Kecepatan Hingga 10 Mbps</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Pinjam Modem Wi-Fi Gratis</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Bantuan Support 24/7</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPackage('Paket Hemat 10 Mbps (Rp 100.000/bln)')" class="w-full py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+
+                <!-- Paket 2 (Popular) -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between border-brand-500/80 shadow-2xl glow-effect group transform lg:-translate-y-3">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-600 to-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                        Paling Populer 🔥
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-start mb-4 mt-2">
+                            <div>
+                                <span class="text-xs font-bold text-brand-400 uppercase tracking-wider">Keluarga</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Paket Family</h3>
+                            </div>
+                            <span class="bg-brand-600 text-white p-3 rounded-2xl">
+                                <i class="fa-solid fa-users text-xl"></i>
+                            </span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6">Cocok untuk 4 - 6 perangkat, streaming HD & YouTube tanpa lag.</p>
+                        
+                        <div class="mb-6">
+                            <span class="text-4xl font-black text-white">20</span>
+                            <span class="text-lg font-bold text-brand-400"> Mbps</span>
+                            <div class="text-2xl font-bold text-slate-200 mt-2">Rp 150.000 <span class="text-xs text-slate-400 font-normal">/bulan</span></div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8 border-t border-slate-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Unlimited Tanpa FUP</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Kecepatan Hingga 20 Mbps</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Streaming Full HD Lancar</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Gratis Biaya Pasang (Syarat Berlaku)</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPackage('Paket Family 20 Mbps (Rp 150.000/bln)')" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="glass-card rounded-3xl p-8 relative flex flex-col justify-between hover:border-slate-700 transition-all group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Performa</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Paket Gamer / Pro</h3>
+                            </div>
+                            <span class="bg-slate-800 text-slate-300 p-3 rounded-2xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-gamepad text-xl"></i>
+                            </span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6">Untuk gaming online, kerja WFH, download file besar & smart TV.</p>
+                        
+                        <div class="mb-6">
+                            <span class="text-4xl font-black text-white">50</span>
+                            <span class="text-lg font-bold text-brand-400"> Mbps</span>
+                            <div class="text-2xl font-bold text-slate-200 mt-2">Rp 250.000 <span class="text-xs text-slate-400 font-normal">/bulan</span></div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8 border-t border-slate-800 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Low Ping untuk Online Game</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Streaming 4K Ultra HD</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Prioritas Jalur Fiber Optic</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Prioritas Penanganan Gangguan</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPackage('Paket Gamer Pro 50 Mbps (Rp 250.000/bln)')" class="w-full py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+                        Pilih Paket Ini
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Checker Section -->
+    <section id="coverage" class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Cek Jangkauan Fiber</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1">Apakah RT/RW Anda Ter-cover?</h2>
+                    <p class="text-slate-400 mt-2 text-sm">Masukkan wilayah RT/RW Anda untuk mengecek ketersediaan tiang & ODP internet kami.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                        <input type="text" id="coverage-input" placeholder="Contoh: RT 03 RW 05 atau Perumahan..." class="w-full bg-slate-900 border border-slate-700 focus:border-brand-500 text-white pl-11 pr-4 py-3.5 rounded-xl outline-none text-sm transition-all">
+                    </div>
+                    <button onclick="checkCoverage()" class="bg-brand-600 hover:bg-brand-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all text-sm shrink-0 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-signal"></i> Cek Jangkauan
+                    </button>
+                </div>
+
+                <!-- Coverage Result Box -->
+                <div id="coverage-result" class="hidden mt-6 p-4 rounded-xl text-center text-sm font-medium transition-all"></div>
+
+                <div class="mt-8 pt-8 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div>
+                        <p class="text-2xl font-extrabold text-brand-400">12+</p>
+                        <p class="text-xs text-slate-400">Wilayah RT/RW</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-emerald-400">500+</p>
+                        <p class="text-xs text-slate-400">Pelanggan Aktif</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-cyan-400">99.8%</p>
+                        <p class="text-xs text-slate-400">Uptime Server</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-extrabold text-purple-400">24/7</p>
+                        <p class="text-xs text-slate-400">Teknisi Standby</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator Section -->
+    <section id="kalkulator" class="py-16 bg-slate-900/40 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Bingung Pilih Kecepatan?</h2>
+                <p class="text-slate-400 text-sm mt-1">Gunakan kalkulator kami untuk hitung estimasi paket internet yang pas untuk rumah Anda.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+                <div>
+                    <div class="flex justify-between text-sm font-semibold text-slate-300 mb-2">
+                        <span><i class="fa-solid fa-mobile-screen text-brand-400 mr-2"></i> Jumlah Perangkat (HP / Laptop / Smart TV):</span>
+                        <span id="device-count-label" class="text-brand-400 font-bold">4 Perangkat</span>
+                    </div>
+                    <input type="range" id="device-slider" min="1" max="15" value="4" oninput="updateCalculator()" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                </div>
+
+                <div>
+                    <span class="text-sm font-semibold text-slate-300 block mb-2"><i class="fa-solid fa-tv text-brand-400 mr-2"></i> Penggunaan Utama:</span>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="setUsage('light')" id="usage-light" class="usage-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-xs sm:text-sm font-medium text-slate-300 hover:border-brand-500 transition-all">Chatting & Medsos</button>
+                        <button onclick="setUsage('medium')" id="usage-medium" class="usage-btn bg-brand-600 border border-brand-500 p-3 rounded-xl text-xs sm:text-sm font-medium text-white transition-all">Streaming HD / Work</button>
+                        <button onclick="setUsage('heavy')" id="usage-heavy" class="usage-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-xs sm:text-sm font-medium text-slate-300 hover:border-brand-500 transition-all">Game Online / 4K</button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider block">Rekomendasi Paket</span>
+                        <p id="calc-result-title" class="text-xl font-extrabold text-emerald-400">Paket Family (20 Mbps)</p>
+                        <p id="calc-result-desc" class="text-xs text-slate-400">Cocok untuk aktivitas harian tanpa hambatan.</p>
+                    </div>
+                    <button onclick="applyCalcPackage()" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all shrink-0">
+                        Pesan Paket Ini <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Interactive Form Tabs Section -->
+    <section id="daftar" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-whatsapp uppercase tracking-widest">Layanan Notifikasi WA</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Formulir Pesan Direct WhatsApp</h2>
+                <p class="text-slate-400 text-sm mt-2">Isi formulir di bawah, sistem akan menyusun format pesan otomatis ke WhatsApp Admin kami.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-10 glow-wa border-emerald-500/30">
+                
+                <!-- Tab Navigation -->
+                <div class="flex border-b border-slate-800 mb-8 overflow-x-auto pb-2 gap-2">
+                    <button onclick="switchTab('pemasangan')" id="tab-pemasangan" class="tab-btn active-tab px-5 py-2.5 rounded-xl font-bold text-sm transition-all bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                        <i class="fa-solid fa-user-plus mr-2"></i>Pasang Baru
+                    </button>
+                    <button onclick="switchTab('gangguan')" id="tab-gangguan" class="tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-400 hover:text-slate-200">
+                        <i class="fa-solid fa-triangle-exclamation mr-2"></i>Lapor Gangguan
+                    </button>
+                    <button onclick="switchTab('pembayaran')" id="tab-pembayaran" class="tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-400 hover:text-slate-200">
+                        <i class="fa-solid fa-receipt mr-2"></i>Konfirmasi Bayar
+                    </button>
+                </div>
+
+                <!-- Form 1: Pasang Baru -->
+                <form id="form-pemasangan" onsubmit="submitForm(event, 'pemasangan')" class="space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap</label>
+                            <input type="text" id="pasang-nama" required placeholder="Sesuai KTP" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor WhatsApp Anda</label>
+                            <input type="tel" id="pasang-hp" required placeholder="08123456789" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Pilihan Paket Internet</label>
+                            <select id="pasang-paket" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                                <option value="Paket Hemat 10 Mbps (Rp 100.000/bln)">Paket Hemat 10 Mbps - Rp 100rb/bln</option>
+                                <option value="Paket Family 20 Mbps (Rp 150.000/bln)" selected>Paket Family 20 Mbps - Rp 150rb/bln</option>
+                                <option value="Paket Gamer Pro 50 Mbps (Rp 250.000/bln)">Paket Gamer Pro 50 Mbps - Rp 250rb/bln</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Rencana Tanggal Pasang</label>
+                            <input type="date" id="pasang-tgl" required class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Alamat Lengkap (RT/RW & No. Rumah)</label>
+                        <textarea id="pasang-alamat" rows="2" required placeholder="Jl. Mawar No. 12, RT 02 / RW 05..." class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-lg glow-wa flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Form Pendaftaran ke WA
+                    </button>
+                </form>
+
+                <!-- Form 2: Lapor Gangguan -->
+                <form id="form-gangguan" onsubmit="submitForm(event, 'gangguan')" class="space-y-5 hidden">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">ID Pelanggan / Nama</label>
+                            <input type="text" id="lapor-id" required placeholder="ID-1024 atau Nama Anda" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Lokasi RT/RW</label>
+                            <input type="text" id="lapor-lokasi" required placeholder="RT 03 RW 01" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Jenis Kendala</label>
+                        <select id="lapor-jenis" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                            <option value="Lampu LOS Merah Berkedip">Lampu LOS di Modem Warna Merah</option>
+                            <option value="Koneksi Lambat / Buffering">Koneksi Lambat / Lemot</option>
+                            <option value="Tidak Bisa Konek Wi-Fi">Wi-Fi Tidak Terdeteksi / Tidak Konek</option>
+                            <option value="Kabel Fiber Putus / Kendala Fisik">Kabel Putus / Terkena Dahan Pohon</option>
+                            <option value="Lainnya">Kendala Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Detail Deskripsi Keluhan</label>
+                        <textarea id="lapor-detail" rows="3" required placeholder="Jelaskan sejak kapan kendala terjadi..." class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-lg glow-wa flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Tiket Gangguan ke WA
+                    </button>
+                </form>
+
+                <!-- Form 3: Konfirmasi Pembayaran -->
+                <form id="form-pembayaran" onsubmit="submitForm(event, 'pembayaran')" class="space-y-5 hidden">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nama / ID Pelanggan</label>
+                            <input type="text" id="bayar-nama" required placeholder="Nama Terdaftar" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Bulan Tagihan</label>
+                            <select id="bayar-bulan" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                                <option value="Januari">Januari</option>
+                                <option value="Februari">Februari</option>
+                                <option value="Maret">Maret</option>
+                                <option value="April">April</option>
+                                <option value="Mei">Mei</option>
+                                <option value="Juni">Juni</option>
+                                <option value="Juli">Juli</option>
+                                <option value="Agustus">Agustus</option>
+                                <option value="September">September</option>
+                                <option value="Oktober">Oktober</option>
+                                <option value="November">November</option>
+                                <option value="Desember">Desember</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Jumlah Transfer (Rp)</label>
+                            <input type="text" id="bayar-nominal" required placeholder="150.000" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Metode Pembayaran</label>
+                            <select id="bayar-metode" class="w-full bg-slate-900 border border-slate-700 focus:border-emerald-500 text-white px-4 py-3 rounded-xl outline-none text-sm">
+                                <option value="Transfer Bank BCA/BRI/Mandiri">Transfer Bank</option>
+                                <option value="E-Wallet (Dana/OVO/Gopay/QRIS)">E-Wallet / QRIS</option>
+                                <option value="Cash / Bayar Tunai ke Petugas">Tunai ke Petugas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Setelah klik tombol kirim, harap lampirkan foto struk / tangkapan layar bukti transfer pada obrolan WhatsApp.
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-lg glow-wa flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Bukti Bayar ke WA Admin
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white text-center mb-10">Pertanyaan Sering Diajukan (FAQ)</h2>
+            <div class="space-y-4">
+                <details class="glass-card rounded-2xl p-5 cursor-pointer group">
+                    <summary class="font-bold text-white flex justify-between items-center list-none">
+                        <span>Apakah ada biaya pemasangan awal (biaya pasang)?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-sm mt-3 border-t border-slate-800/80 pt-3">
+                        Biaya pemasangan normal adalah Rp 150.000 (termasuk kabel fiber optic & setting router). Namun kami sering mengadakan promo Gratis Biaya Pasang untuk pembayaran langsung 2 bulan pertama!
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-5 cursor-pointer group">
+                    <summary class="font-bold text-white flex justify-between items-center list-none">
+                        <span>Apakah benar internet ini benar-benar Unlimited tanpa FUP?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-sm mt-3 border-t border-slate-800/80 pt-3">
+                        Ya, betul! Layanan RT/RW Net kami menggunakan skema Flat Rate Unlimited tanpa batasan FUP (Fair Usage Policy). Kecepatan internet Anda tidak akan diturunkan meskipun mendownload file besar.
+                    </p>
+                </details>
+
+                <details class="glass-card rounded-2xl p-5 cursor-pointer group">
+                    <summary class="font-bold text-white flex justify-between items-center list-none">
+                        <span>Bagaimana jika terjadi cuaca buruk atau gangguan listrik?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="text-slate-400 text-sm mt-3 border-t border-slate-800/80 pt-3">
+                        Perangkat server pusat kami dilengkapi dengan UPS backup baterai otomatis. Selama jaringan kabel fisik tidak terputus, koneksi Anda tetap aktif saat mati listrik (selama router di rumah Anda tetap menyala).
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-2 text-xl font-extrabold text-white">
+                    <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-wifi text-sm"></i>
+                    </div>
+                    <span>NEXUS<span class="text-brand-500">.NET</span></span>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm max-w-sm">
+                    Penyedia jasa layanan internet komunitas RT/RW berbasis Fiber Optic cepat, murah, dan handal untuk memajukan konektivitas warga lokal.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Navigasi</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#beranda" class="hover:text-brand-400">Beranda</a></li>
+                    <li><a href="#paket" class="hover:text-brand-400">Paket Internet</a></li>
+                    <li><a href="#coverage" class="hover:text-brand-400">Cek Jangkauan Area</a></li>
+                    <li><a href="#daftar" class="hover:text-brand-400">Pendaftaran Baru</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Kontak Admin WA</h4>
+                <p class="text-xs text-slate-400 mb-2">WhatsApp Standby: <br><span id="display-wa-num" class="text-emerald-400 font-mono font-bold">081573706436</span></p>
+                <button onclick="openConfigModal()" class="text-xs text-brand-400 hover:underline">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> Ubah No. WA Admin
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>© <span id="year"></span> NEXUS RT/RW Net. All rights reserved.</p>
+            <p>Didesain untuk kemudahan integrasi WhatsApp Notice.</p>
+        </div>
+    </footer>
+
+    <!-- Admin WA Configuration Modal -->
+    <div id="config-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full border border-slate-700 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-gear text-brand-400 mr-2"></i> Setting Nomor WhatsApp</h3>
+                <button onclick="closeConfigModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <p class="text-slate-400 text-xs mb-6">
+                Masukkan nomor WhatsApp pengelola / admin RT/RW Net. Semua pendaftaran dan laporan gangguan dari pengguna akan otomatis dikirimkan ke nomor ini.
+            </p>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor WA Admin (Gunakan Awalan 62 atau 08)</label>
+                    <input type="text" id="admin-wa-input" placeholder="081573706436" class="w-full bg-slate-900 border border-slate-700 focus:border-brand-500 text-white px-4 py-3 rounded-xl outline-none text-sm font-mono">
+                </div>
+                <button onclick="saveAdminWA()" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all text-sm">
+                    Simpan Nomor WA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card border-brand-500/50 p-4 rounded-2xl shadow-xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div id="toast-icon" class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 id="toast-title" class="text-xs font-bold text-white">Notifikasi</h4>
+            <p id="toast-desc" class="text-xs text-slate-300">Pesan berhasil diolah.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Default Admin WhatsApp Number
+        let adminWANumber = localStorage.getItem('rtnet_wa_number') || '6281573706436';
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        window.onload = function() {
+            updateWADisplay();
+            // Set default date for installation form
+            const today = new Date();
+            today.setDate(today.getDate() + 1);
+            document.getElementById('pasang-tgl').value = today.toISOString().split('T')[0];
+        };
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Config Modal Functions
+        function openConfigModal() {
+            document.getElementById('admin-wa-input').value = adminWANumber;
+            document.getElementById('config-modal').classList.remove('hidden');
+        }
+
+        function closeConfigModal() {
+            document.getElementById('config-modal').classList.add('hidden');
+        }
+
+        function saveAdminWA() {
+            let input = document.getElementById('admin-wa-input').value.trim();
+            if (!input) {
+                showToast('Peringatan', 'Nomor WA tidak boleh kosong', 'fa-triangle-exclamation', 'text-amber-400');
+                return;
+            }
+            // Format number to international 62 format
+            if (input.startsWith('0')) {
+                input = '62' + input.substring(1);
+            }
+            input = input.replace(/[^0-9]/g, '');
+
+            adminWANumber = input;
+            localStorage.setItem('rtnet_wa_number', adminWANumber);
+            updateWADisplay();
+            closeConfigModal();
+            showToast('Berhasil', 'Nomor WhatsApp Admin diperbarui!', 'fa-check', 'text-emerald-400');
+        }
+
+        function updateWADisplay() {
+            const display = document.getElementById('display-wa-num');
+            if (display) display.textContent = adminWANumber;
+        }
+
+        // Toast Helper
+        function showToast(title, desc, iconClass = 'fa-check', iconColor = 'text-emerald-400') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-desc').textContent = desc;
+            document.getElementById('toast-icon').innerHTML = `<i class="fa-solid ${iconClass} ${iconColor}"></i>`;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        // Tab Switcher Logic
+        function switchTab(tabName) {
+            const tabs = ['pemasangan', 'gangguan', 'pembayaran'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                const form = document.getElementById(`form-${t}`);
+                
+                if (t === tabName) {
+                    btn.className = "tab-btn active-tab px-5 py-2.5 rounded-xl font-bold text-sm transition-all bg-emerald-500/20 text-emerald-400 border border-emerald-500/40";
+                    form.classList.remove('hidden');
+                } else {
+                    btn.className = "tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-400 hover:text-slate-200";
+                    form.classList.add('hidden');
+                }
+            });
+        }
+
+        // Select Package from Pricing Card
+        function selectPackage(packageName) {
+            switchTab('pemasangan');
+            const select = document.getElementById('pasang-paket');
+            for(let i = 0; i < select.options.length; i++) {
+                if(select.options[i].value.includes(packageName.split(' ')[0])) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('daftar').scrollIntoView({ behavior: 'smooth' });
+            showToast('Paket Dipilih', `Mengisi formulir dengan ${packageName}`, 'fa-info-circle', 'text-brand-400');
+        }
+
+        // Form Submission -> WA Formatting Redirect
+        function submitForm(event, type) {
+            event.preventDefault();
+
+            let message = "";
+
+            if (type === 'pemasangan') {
+                const nama = document.getElementById('pasang-nama').value;
+                const hp = document.getElementById('pasang-hp').value;
+                const paket = document.getElementById('pasang-paket').value;
+                const tgl = document.getElementById('pasang-tgl').value;
+                const alamat = document.getElementById('pasang-alamat').value;
+
+                message = `*--- FORM PENDAFTARAN PASANG BARU ---*\n\n` +
+                          `👤 *Nama*: ${nama}\n` +
+                          `📱 *No. WA*: ${hp}\n` +
+                          `📦 *Paket Pilihan*: ${paket}\n` +
+                          `📅 *Rencana Pasang*: ${tgl}\n` +
+                          `📍 *Alamat*: ${alamat}\n\n` +
+                          `Mohon diproses untuk pengecekan lokasi & jadwal teknisi. Terima kasih!`;
+
+            } else if (type === 'gangguan') {
+                const idPel = document.getElementById('lapor-id').value;
+                const lokasi = document.getElementById('lapor-lokasi').value;
+                const jenis = document.getElementById('lapor-jenis').value;
+                const detail = document.getElementById('lapor-detail').value;
+
+                message = `*--- TIKET LAPOR GANGGUNA/KOMPLAIN ---*\n\n` +
+                          `🆔 *ID / Nama Pelanggan*: ${idPel}\n` +
+                          `📍 *Lokasi RT/RW*: ${lokasi}\n` +
+                          `⚠️ *Jenis Kendala*: ${jenis}\n` +
+                          `📝 *Detail Kendala*: ${detail}\n\n` +
+                          `Mohon bantuan teknisi untuk segera melakukan pengecekan. Terima kasih!`;
+
+            } else if (type === 'pembayaran') {
+                const nama = document.getElementById('bayar-nama').value;
+                const bulan = document.getElementById('bayar-bulan').value;
+                const nominal = document.getElementById('bayar-nominal').value;
+                const metode = document.getElementById('bayar-metode').value;
+
+                message = `*--- KONFIRMASI PEMBAYARAN TAGIHAN ---*\n\n` +
+                          `👤 *Pelanggan*: ${nama}\n` +
+                          `📅 *Tagihan Bulan*: ${bulan}\n` +
+                          `💵 *Nominal*: Rp ${nominal}\n` +
+                          `💳 *Metode Bayar*: ${metode}\n\n` +
+                          `*(Bukti foto/struk transfer dilampirkan setelah pesan ini)*`;
+            }
+
+            // Encode text for WhatsApp API
+            const encodedText = encodeURIComponent(message);
+            const waUrl = `https://api.whatsapp.com/send?phone=${adminWANumber}&text=${encodedText}`;
+
+            showToast('Mengarahkan ke WA', 'Membuka aplikasi WhatsApp...', 'fa-paper-plane', 'text-emerald-400');
+            
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 800);
+        }
+
+        // Coverage Area Checking Simulation
+        function checkCoverage() {
+            const query = document.getElementById('coverage-input').value.trim().toLowerCase();
+            const resultBox = document.getElementById('coverage-result');
+
+            if (!query) {
+                showToast('Peringatan', 'Masukkan nama RT, RW, atau Jalan', 'fa-triangle-exclamation', 'text-amber-400');
+                return;
+            }
+
+            resultBox.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/40', 'text-emerald-300', 'bg-amber-500/10', 'border-amber-500/40', 'text-amber-300');
+
+            // Simulated check logic
+            if (query.includes('01') || query.includes('02') || query.includes('03') || query.includes('04') || query.includes('mawar') || query.includes('perum')) {
+                resultBox.className = "mt-6 p-4 rounded-xl text-center text-sm font-medium border bg-emerald-500/10 border-emerald-500/40 text-emerald-300";
+                resultBox.innerHTML = `<i class="fa-solid fa-circle-check text-lg mr-2"></i> Lokasi <strong>"${query.toUpperCase()}"</strong> TER-COVER Fiber Optic! Tiang & Port ODP siap pasang.`;
+            } else {
+                resultBox.className = "mt-6 p-4 rounded-xl text-center text-sm font-medium border bg-amber-500/10 border-amber-500/40 text-amber-300";
+                resultBox.innerHTML = `<i class="fa-solid fa-clock text-lg mr-2"></i> Lokasi <strong>"${query.toUpperCase()}"</strong> dalam tahap perluasan tiang. Tetap daftarkan lokasi Anda agar diprioritaskan!`;
+            }
+        }
+
+        // Bandwidth Calculator Logic
+        let currentUsage = 'medium';
+        
+        function setUsage(type) {
+            currentUsage = type;
+            document.querySelectorAll('.usage-btn').forEach(btn => {
+                btn.className = "usage-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-xs sm:text-sm font-medium text-slate-300 hover:border-brand-500 transition-all";
+            });
+            const activeBtn = document.getElementById(`usage-${type}`);
+            activeBtn.className = "usage-btn bg-brand-600 border border-brand-500 p-3 rounded-xl text-xs sm:text-sm font-medium text-white transition-all";
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const devices = document.getElementById('device-slider').value;
+            document.getElementById('device-count-label').textContent = `${devices} Perangkat`;
+
+            const title = document.getElementById('calc-result-title');
+            const desc = document.getElementById('calc-result-desc');
+
+            if (devices <= 3 && currentUsage !== 'heavy') {
+                title.textContent = "Paket Hemat (10 Mbps)";
+                desc.textContent = "Sangat ekonomis untuk kebutuhan browsing ringan & WhatsApp.";
+            } else if (devices <= 7 || currentUsage === 'medium') {
+                title.textContent = "Paket Family (20 Mbps)";
+                desc.textContent = "Kapasitas pas untuk keluarga, YouTube HD & Zoom lancar.";
+            } else {
+                title.textContent = "Paket Gamer / Pro (50 Mbps)";
+                desc.textContent = "Performa maksimal tanpa kompromi untuk banyak pengguna sekaligus.";
+            }
+        }
+
+        function applyCalcPackage() {
+            const packageName = document.getElementById('calc-result-title').textContent;
+            selectPackage(packageName);
+        }
+
+        // Speedtest Simulator Animation
+        let isTesting = false;
+        function runSpeedTest() {
+            if (isTesting) return;
+            isTesting = true;
+
+            const circle = document.getElementById('speed-circle');
+            const speedVal = document.getElementById('speed-value');
+            const dlSpeed = document.getElementById('dl-speed');
+            const ulSpeed = document.getElementById('ul-speed');
+            const btn = document.getElementById('btn-test-speed');
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Menguji Sinyal...`;
+
+            let step = 0;
+            const targetSpeed = Math.floor(Math.random() * 20) + 85; // Simulates ~85-105 Mbps
+
+            const interval = setInterval(() => {
+                step += 3;
+                if (step > targetSpeed) {
+                    step = targetSpeed;
+                    clearInterval(interval);
+                    isTesting = false;
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-rotate-right mr-2"></i> Uji Ulang Kecepatan`;
+                    showToast('Uji Selesai', `Kecepatan terdeteksi: ${targetSpeed} Mbps`, 'fa-bolt', 'text-yellow-400');
+                }
+
+                speedVal.textContent = step;
+                
+                // Animate SVG Circle Gauge
+                const offset = 283 - (283 * step) / 120;
+                circle.style.strokeDashoffset = offset;
+
+                dlSpeed.textContent = `${(step * 0.98).toFixed(1)} Mbps`;
+                ulSpeed.textContent = `${(step * 0.85).toFixed(1)} Mbps`;
+
+            }, 40);
+        }
+    </script>
+</body>
+</html>
